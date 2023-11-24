@@ -5,7 +5,7 @@ const nameEl = <HTMLElement>document.getElementById("name");
 const callbackForm = <HTMLFormElement>document.getElementById("callback");
 const successForm = <HTMLElement>document.querySelector(".form__success");
 const closeSuccessFormButton = <HTMLElement>document.querySelector(".form__success-close");
-const minNumberLength: number = 11;
+const minNumberLength: number = 18;
 const minNameLength: number = 3;
 const API_KEY: string = "P3RTS9G-2YH4XAV-QWKVWAZ-E9XFFDQ";
 const API_MOVIES_URL: string = "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=8-10";
@@ -67,7 +67,13 @@ function validation(form: Element) {
   const allInputs = form.querySelectorAll("input");
 
   for (const input of allInputs) {
+
     removeError(input);
+    if (input.type == "tel" && input.value.length < minNumberLength) {
+      removeError(input);
+      createError(input, "Неверный номер телефона!");
+      result = false;
+    }
 
     if (input.dataset.required == "true") {
       if (input.value == "" || input.value.length < minNameLength) {
@@ -76,11 +82,6 @@ function validation(form: Element) {
         result = false;
       }
 
-      if (input.type == "tel" && input.value.length < minNumberLength) {
-        removeError(input);
-        createError(input, "Неверный номер телефона!");
-        result = false;
-      }
     }
   }
 
