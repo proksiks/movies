@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <title>async and validation form</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+            <ul class="movies"></ul>
+            <div class="spinner"></div>
+            
+            <button class="button show-more">
+                Показать фильмы
+            </button>
+
+            <form class="form" id="callback" action="" method="get">
+
+                <label class="form__label" for="name">
+                    <span class="form__title">Имя</span>
+                    <input class="form__input" data-required="true" id="name" type="text" placeholder="Имя" />
+                </label>
+
+                <label class="form__label" for="phone">
+                    <span class="form__title">Телефон</span>
+                    <input class="form__input" data-required="true" id="phone" type="tel"
+                        placeholder="+7 (777) 777-77-77" />
+                </label>
+
+                <button type="submit" class="button form__button" aria-label="Отправить форму">Отправить</button>
+
+                <span class="form__success">
+                    Спасибо! <br />
+                    Менеджер свяжится с вами в ближайшее время
+                    <button type="button" class="form__success-close" aria-label="Закрыть модальное окно">X</button>
+                </span>
+            </form>
+
+        </div>
+    </div>
+
+
+    <script defer src="/js/index.js"></script>
+</body>
+
+</html>
