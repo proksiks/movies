@@ -5,10 +5,11 @@ const nameEl = <HTMLElement>document.getElementById("name");
 const callbackForm = <HTMLFormElement>document.getElementById("callback");
 const successForm = <HTMLElement>document.querySelector(".form__success");
 const closeSuccessFormButton = <HTMLElement>document.querySelector(".form__success-close");
-const minNumberLength: number = 18;
-const minNameLength: number = 3;
 const API_KEY: string = "P3RTS9G-2YH4XAV-QWKVWAZ-E9XFFDQ";
 const API_MOVIES_URL: string = "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=8-10";
+
+let minNumberLength: number = 18;
+let minNameLength: number = 3;
 
 async function getMovies(url: string) {
   const response = await fetch(url, {
@@ -67,9 +68,8 @@ function validation(form: Element) {
   const allInputs = form.querySelectorAll("input");
 
   for (const input of allInputs) {
-
     removeError(input);
-    if (input.type == "tel" && input.value.length < minNumberLength) {
+    if (input.type == "tel" && input.value.length < 18) {
       removeError(input);
       createError(input, "Неверный номер телефона!");
       result = false;
@@ -81,7 +81,6 @@ function validation(form: Element) {
         createError(input, "Заполните поле");
         result = false;
       }
-
     }
   }
 
@@ -103,6 +102,7 @@ function prefixNumber(str: string) {
 
 phone.addEventListener("input", (e) => {
   const value = (phone as HTMLInputElement).value.replace(/\D+/g, "");
+  minNumberLength = 11;
 
   let result;
 
@@ -147,7 +147,7 @@ showMoreButton.addEventListener("click", async function () {
   preloader.classList.add("spinner_show");
   await getMovies(API_MOVIES_URL);
   preloader.classList.remove("spinner_show");
-  this.remove()
+  this.remove();
 });
 
 closeSuccessFormButton.addEventListener("click", function () {
