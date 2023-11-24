@@ -146,6 +146,7 @@ showMoreButton.addEventListener("click", async function () {
   preloader.classList.add("spinner_show");
   await getMovies(API_MOVIES_URL);
   preloader.classList.remove("spinner_show");
+  this.remove()
 });
 
 closeSuccessFormButton.addEventListener("click", function () {

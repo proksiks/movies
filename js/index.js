@@ -135,6 +135,7 @@ showMoreButton.addEventListener("click", function () {
         preloader.classList.add("spinner_show");
         yield getMovies(API_MOVIES_URL);
         preloader.classList.remove("spinner_show");
+        this.remove();
     });
 });
 closeSuccessFormButton.addEventListener("click", function () {
