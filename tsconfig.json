@@ -3,7 +3,7 @@
         "lib": ["es5", "es6", "dom", "DOM.Iterable"],
         "outDir": "./js/",
         "noImplicitAny": true,
-        "module": "commonjs",
+        "module": "es6",
         "target": "es6",
         "moduleResolution": "node",
     }
