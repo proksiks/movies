@@ -14,7 +14,7 @@ const nameEl = document.getElementById("name");
 const successForm = document.querySelector(".form__success");
 const closeSuccessFormButton = document.querySelector(".form__success-close");
 const callbackForm = document.getElementById("callback");
-const API_KEY = "P3RTS9G-2YH4XAV-QWKVWAZ-E9XFFDQ";
+const API_KEY = "BP9Q4SX-8C0MNTW-H2R94KW-2ZCX4C4";
 const API_MOVIES_URL = "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=8-10";
 let minNumberLength = 18;
 let minNameLength = 3;
@@ -46,9 +46,6 @@ function showMovies(data) {
         const picture = document.createElement("picture");
         const img = document.createElement("img");
         const p = document.createElement("p");
-        li.appendChild(picture);
-        picture.appendChild(img);
-        li.appendChild(p);
         li.classList.add("movie");
         picture.classList.add("movie__cover");
         img.classList.add("movie__image");
@@ -56,8 +53,10 @@ function showMovies(data) {
         img.src = movie.backdrop.previewUrl;
         img.alt = movie.name;
         p.append(movie.name);
-        moviesEl.appendChild(li);
+        li.appendChild(picture);
         picture.appendChild(img);
+        li.appendChild(p);
+        moviesEl.appendChild(li);
     });
 }
 function removeError(input) {
