@@ -45,12 +45,10 @@ function showMovies(data: { docs: [] }) {
 
   data.docs?.forEach((movie: Movie) => {
     const li = document.createElement("li");
-    const picture = document.createElement("picture");
     const img = document.createElement("img");
     const p = document.createElement("p");
 
     li.classList.add("movie");
-    picture.classList.add("movie__cover");
     img.classList.add("movie__image");
     p.classList.add("movie__title");
     
@@ -58,8 +56,7 @@ function showMovies(data: { docs: [] }) {
     img.alt = movie.name;
     
     p.append(movie.name);
-    li.appendChild(picture);
-    picture.appendChild(img);
+    li.appendChild(img);
     li.appendChild(p);
     moviesEl.appendChild(li);
   });

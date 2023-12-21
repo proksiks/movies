@@ -43,18 +43,15 @@ function showMovies(data) {
     const moviesEl = document.querySelector(".movies");
     (_a = data.docs) === null || _a === void 0 ? void 0 : _a.forEach((movie) => {
         const li = document.createElement("li");
-        const picture = document.createElement("picture");
         const img = document.createElement("img");
         const p = document.createElement("p");
         li.classList.add("movie");
-        picture.classList.add("movie__cover");
         img.classList.add("movie__image");
         p.classList.add("movie__title");
         img.src = movie.backdrop.previewUrl;
         img.alt = movie.name;
         p.append(movie.name);
-        li.appendChild(picture);
-        picture.appendChild(img);
+        li.appendChild(img);
         li.appendChild(p);
         moviesEl.appendChild(li);
     });
