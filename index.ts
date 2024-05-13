@@ -51,10 +51,10 @@ function showMovies(data: { docs: [] }) {
     li.classList.add("movie");
     img.classList.add("movie__image");
     p.classList.add("movie__title");
-    
-    img.src = movie.backdrop.previewUrl;
+
+    img.src = movie.backdrop?.previewUrl;
     img.alt = movie.name;
-    
+
     p.append(movie.name);
     li.appendChild(img);
     li.appendChild(p);
