@@ -84,6 +84,7 @@ body {
   object-fit: cover;
   display: block;
   transition: transform 0.15s ease;
+  max-height: 380px;
 }
 
 .movie__title {

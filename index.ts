@@ -1,8 +1,12 @@
 export type Movie = {
+  poster: {
+    previewUrl: string;
+  };
   backdrop: {
     previewUrl: string;
   };
   name: string;
+  holder: string;
 };
 
 const showMoreButton = <HTMLElement>document.querySelector(".show-more");
@@ -43,7 +47,7 @@ async function loadMovie() {
 function showMovies(data: { docs: [] }) {
   const moviesEl = document.querySelector(".movies");
 
-  data.docs?.forEach((movie: Movie) => {
+  data.docs?.forEach((movie: Movie, idx: number) => {
     const li = document.createElement("li");
     const img = document.createElement("img");
     const p = document.createElement("p");
@@ -52,7 +56,13 @@ function showMovies(data: { docs: [] }) {
     img.classList.add("movie__image");
     p.classList.add("movie__title");
 
-    img.src = movie.backdrop?.previewUrl;
+    if (!movie.name) movie.name = "Заголовок отсутствует или api опят лёг"
+
+    if (movie.poster) {
+      img.src = movie.poster.previewUrl
+    } else {
+      img.src = 'https://placehold.co/380x380?text=Api+опять+упал'
+    }
     img.alt = movie.name;
 
     p.append(movie.name);

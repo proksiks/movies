@@ -41,14 +41,21 @@ function loadMovie() {
 function showMovies(data) {
     var _a;
     const moviesEl = document.querySelector(".movies");
-    (_a = data.docs) === null || _a === void 0 ? void 0 : _a.forEach((movie) => {
+    (_a = data.docs) === null || _a === void 0 ? void 0 : _a.forEach((movie, idx) => {
         const li = document.createElement("li");
         const img = document.createElement("img");
         const p = document.createElement("p");
         li.classList.add("movie");
         img.classList.add("movie__image");
         p.classList.add("movie__title");
-        img.src = movie.backdrop.previewUrl;
+        if (!movie.name)
+            movie.name = "Заголовок отсутствует или api опят лёг";
+        if (movie.poster) {
+            img.src = movie.poster.previewUrl;
+        }
+        else {
+            img.src = 'https://placehold.co/380x380?text=Api+опять+упал';
+        }
         img.alt = movie.name;
         p.append(movie.name);
         li.appendChild(img);
